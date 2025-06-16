@@ -1,0 +1,42 @@
+agent_factory_args:
+  name: AzureGPTMiniWobAgent
+  model_name: gpt-4o  # Your Azure deployment name
+  api_version: "2024-08-01-preview"
+  temperature: 0.0
+  char_limit: 40000
+
+exp_dir: ./experiments/azure_gpt_miniwob
+
+# List of MiniWob++ environments to test
+environments:
+  # Simple click tasks - good for initial testing
+  - click-test
+  - click-test-2
+  - click-button
+  - click-checkboxes
+  
+  # Text input tasks
+  - enter-text
+  - enter-text-2
+  - enter-password
+  
+  # Form tasks
+  - login-user
+  - form-sequence
+  
+  # Navigation tasks
+  - click-tab
+  - click-tab-2
+  
+  # More complex tasks
+  - book-flight
+  - choose-date
+  - use-autocomplete
+
+num_episodes: 5  # Number of episodes per environment
+max_steps: 50    # Maximum steps per episode
+timeout: 60      # Timeout in seconds per episode
+
+# Environment variables needed:
+# api_key_azure - Your Azure API key
+# api_base_azure_ai - Your Azure endpoint URL

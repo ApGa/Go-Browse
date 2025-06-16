@@ -1,0 +1,46 @@
+agent_factory_args:
+  name: MiniWobSolverAgent
+  model_id: <PLACEHOLDER - Huggingface model ID or path to local model>
+  base_url: <PLACEHOLDER - Optional URL for model inference. Can leave null if setting OpenAI API environment variables>
+  base_url_2: <PLACEHOLDER - Optional backup URL for model inference. For example, when using Qwen models, this URL can expose a VLLM endpoint configured for a longer context length>
+  api_key: <PLACEHOLDER - Optional API key for model inference. Can leave null if setting OpenAI API environment variables>
+  temperature: 0.
+  char_limit: 40000 # Character limit for truncating prompt.
+
+exp_dir: <PLACEHOLDER - Path to user-specified experiment directory>
+
+# List of MiniWob++ environments to test
+environments:
+  # Simple click tasks
+  - click-test
+  - click-test-2
+  - click-button
+  - click-checkboxes
+  - click-link
+  
+  # Text input tasks
+  - enter-text
+  - enter-text-2
+  - enter-password
+  - enter-date
+  - enter-time
+  
+  # Form tasks
+  - login-user
+  - form-sequence
+  - form-sequence-2
+  
+  # Navigation tasks
+  - click-tab
+  - click-tab-2
+  - navigate-tree
+  
+  # More complex tasks
+  - book-flight
+  - choose-date
+  - use-autocomplete
+  - search-engine
+
+num_episodes: 5  # Number of episodes per environment
+max_steps: 50    # Maximum steps per episode
+timeout: 60      # Timeout in seconds per episode

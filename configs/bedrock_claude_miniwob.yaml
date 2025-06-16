@@ -1,0 +1,43 @@
+agent_factory_args:
+  name: BedrockClaudeMiniWobAgent
+  model_id: "anthropic.claude-3-5-sonnet-20240620-v1:0"
+  temperature: 0.0
+  max_tokens: 10000
+  char_limit: 40000
+
+exp_dir: ./experiments/bedrock_claude_miniwob
+
+# List of MiniWob++ environments to test
+environments:
+  # Simple click tasks - good for initial testing
+  - click-test
+  - click-test-2
+  - click-button
+  - click-checkboxes
+  
+  # Text input tasks
+  - enter-text
+  - enter-text-2
+  - enter-password
+  
+  # Form tasks
+  - login-user
+  - form-sequence
+  
+  # Navigation tasks
+  - click-tab
+  - click-tab-2
+  
+  # More complex tasks
+  - book-flight
+  - choose-date
+  - use-autocomplete
+
+num_episodes: 5  # Number of episodes per environment
+max_steps: 50    # Maximum steps per episode
+timeout: 60      # Timeout in seconds per episode
+
+# Environment variables needed:
+# AWS_KEY - Your AWS access key
+# AWS_SECRET_KEY - Your AWS secret key
+# AWS_REGION - Your AWS region (e.g., us-east-1)

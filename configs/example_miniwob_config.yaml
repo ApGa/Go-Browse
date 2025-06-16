@@ -1,0 +1,31 @@
+agent_factory_args:
+  name: MiniWobSolverAgent
+  model_id: gpt-3.5-turbo  # Replace with your model
+  base_url: null  # Set if using custom endpoint
+  base_url_2: null  # Set if using backup endpoint
+  api_key: null  # Set if not using environment variables
+  temperature: 0.0
+  char_limit: 40000
+
+exp_dir: ./experiments/miniwob_test
+
+# List of MiniWob++ environments to test
+environments:
+  # Simple click tasks - good for initial testing
+  - click-test
+  - click-test-2
+  - click-button
+  
+  # Text input tasks
+  - enter-text
+  - enter-text-2
+  
+  # Form tasks
+  - login-user
+  
+  # Navigation tasks
+  - click-tab
+
+num_episodes: 3  # Number of episodes per environment
+max_steps: 20    # Maximum steps per episode
+timeout: 30      # Timeout in seconds per episode

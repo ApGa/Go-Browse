@@ -51,6 +51,29 @@ class BrowserGymAgentStepData(StepData):
 
 
 @dataclass
+class MiniWobAgentStepData(StepData):
+    action: str | None = None
+    thought: str | None = None
+    utterance: str | None = None
+    dom_elements: list | None = None
+    
+    def process_for_dataset(self) -> MiniWobAgentStepData:
+        if self.misc is None:
+            self.misc = {}
+        
+        if self.action is None or self.thought is None or self.utterance is None:
+            self.misc["skip"] = True
+        
+        return MiniWobAgentStepData(
+            action=self.action,
+            thought=self.thought,
+            utterance=self.utterance,
+            dom_elements=self.dom_elements,
+            misc=self.misc
+        )
+
+
+@dataclass
 class BrowserGymAgentTrajectoryData(TrajectoryData):
     steps: list[BrowserGymAgentStepData]
     goal: str
