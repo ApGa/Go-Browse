@@ -64,6 +64,19 @@ class Node:
                 trace_save_dir = os.path.join(prefix_save_dir, f"prefix_{i}")
                 os.makedirs(trace_save_dir)
                 trace.save(trace_save_dir)
+                
+    @staticmethod
+    def node_from_url(url: str, exp_dir: str):
+        return Node(
+            url=url,
+            tasks={},
+            exploration_tasks={},
+            children=[],
+            description="",
+            prefixes=[],
+            visited=False,
+            exp_dir=exp_dir,
+        )
         
             
     @staticmethod

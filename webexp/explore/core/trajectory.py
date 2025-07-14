@@ -11,9 +11,11 @@ def _extract_text_obs(observation):
     if isinstance(observation, str):
         return observation
     elif isinstance(observation, dict):
-        return {k: _extract_text_obs(v) for k, v in observation.items() if isinstance(v, (str, dict, list))}
+        return {k: _extract_text_obs(v) for k, v in observation.items() if isinstance(v, (str, dict, list, tuple))}
     elif isinstance(observation, list):
-        return [_extract_text_obs(item) for item in observation if isinstance(item, (str, dict, list))]
+        return [_extract_text_obs(item) for item in observation if isinstance(item, (str, dict, list, tuple))]
+    elif isinstance(observation, tuple):
+        return tuple(_extract_text_obs(item) for item in observation if isinstance(item, (str, dict, list, tuple)))
     return None
 
 @dataclass
